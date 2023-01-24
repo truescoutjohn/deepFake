@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  //TODO need to delete
+  margin: 0;
+  height: 100vh;
+  // overflow-y: hidden;
+}
+
+.overlay {
+  position: absolute;
+  z-index: -1;
+  width: calc(100% - 51px);
+  min-height: 800px;
+  height: 100vh;
+  background: #0d1011;
+  background-repeat: no-repeat;
+  background-position: -5% -5%, 0;
+
+  @media screen and (min-width: 769px) {
+    background: url('./assets/img/lines.png') no-repeat -5% -5%, #0d1011;
+    width: calc(100% - 66px);
+    mix-blend-mode: color-dodge;
+  }
+}
+
+.gradient-1 {
+  position: absolute;
+  width: 159px;
+  height: 95px;
+  left: 50%;
+  top: 470px;
+  background: #e2ff00;
+  filter: blur(89.5px);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.gradient-2 {
+  position: absolute;
+  width: 215px;
+  height: 86px;
+  left: 23px;
+  top: -24px;
+  background: #e2ff00;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  filter: blur(89.5px);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.gradient-3 {
+  position: fixed;
+  width: 285px;
+  height: 285px;
+  bottom: -20px;
+  left: -98px;
+  background: #e2ff00;
+  opacity: 0.5;
+  filter: blur(230px);
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.button {
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 36px;
+  line-height: 120%;
+  color: #e2ff00;
+}
+
+.logo {
+  display: inline-block;
+  margin: 25px 17px;
+}
+
+.main_night-mode {
+  & .logo {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  justify-content: center;
+  &__link {
+    display: block;
+    margin-top: 33px;
+    width: 24px;
+    height: 24px;
+
+    &_facebook {
+      background: url(./assets/img/facebook.svg);
+    }
+
+    &_linkedin {
+      background: url(./assets/img/linkedin.svg);
+    }
+
+    &_youtube {
+      background: url(./assets/img/youtube.svg);
+    }
+
+    &_telegram {
+      background: url(./assets/img/telegram.svg);
+    }
+  }
+}

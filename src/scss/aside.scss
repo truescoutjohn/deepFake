@@ -1,0 +1,122 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0 10px;
+  // min-height: 350px;
+  height: 100vh;
+  background-color: #e2ff00;
+  width: 65px;
+
+  @media screen and (max-width: 768px) {
+    width: 50px;
+  }
+
+  @media screen and (max-width: 425px) {
+    padding-bottom: 70px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    align-items: justify;
+    gap: 13px;
+  }
+
+  &__logo {
+    align-self: center;
+  }
+
+  &__lang {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__lang-item {
+    padding: 4px 15px;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 160%;
+    color: #0d1011;
+    opacity: 0.5;
+
+    &:hover {
+      background-color: #cbe500;
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &__switcher-mode {
+    position: relative;
+    cursor: pointer;
+  }
+
+  &__line {
+    position: absolute;
+    top: -20px;
+    left: -15px;
+    border: none;
+    border-top: 1px solid #cbe500;
+    width: 50px;
+
+    @media screen and (min-width: 768px) {
+      width: 65px;
+      left: -25px;
+    }
+  }
+
+  &__bottom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    align-items: center;
+  }
+
+  &__socials {
+    flex-direction: column;
+  }
+
+  &_night-mode {
+    background: #060912;
+    & .sidebar {
+      &__lang-item {
+        font-family: 'Montserrat';
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 160%;
+        color: #ffffff;
+        opacity: 0.5;
+
+        &:hover {
+          background: #818c92;
+          opacity: 1;
+        }
+      }
+
+      &__socials {
+        & .socials__link {
+          filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7427%)
+            hue-rotate(23deg) brightness(118%) contrast(118%);
+        }
+      }
+
+      &__line {
+        opacity: 0.3;
+        border-top: 1px solid #ffffff;
+      }
+
+      &__swicther-mode-image {
+        opacity: 0.5;
+        filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7427%)
+          hue-rotate(23deg) brightness(118%) contrast(118%);
+      }
+    }
+  }
+}
