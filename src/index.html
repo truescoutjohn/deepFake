@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Deep fake</title>
+    <title>Jeynix</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/webp" href="./assets/img/favicon.webp" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,6 +19,10 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -30,27 +35,73 @@
 
   <body>
     <main class="main">
+      <img src="./assets/img/lines.png" alt="lines" class="lines" />
+      <img src="./assets/img/lines2.png" alt="lines2" class="lines2" />
+      <div class="gradient-1"></div>
+      <div class="gradient-2"></div>
+      <div class="gradient-3"></div>
+      <div class="gradient-4 active"></div>
       <aside class="sidebar">
         <div class="sidebar__top">
           <img src="./assets/img/logo.svg" alt="logo" class="sidebar__logo" />
           <div class="sidebar__lang">
-            <button class="sidebar__lang-item button">en</button>
-            <button class="sidebar__lang-item button">ua</button>
+            <button class="sidebar__lang-item button sidebar__lang-item_en">en</button>
+            <button class="sidebar__lang-item button sidebar__lang-item_ua">ua</button>
           </div>
         </div>
         <div class="sidebar__bottom">
           <div class="sidebar__socials socials">
-            <div class="socials__item">
-              <a href="#" class="socials__link socials__link_facebook"></a>
+            <div class="asidesocials__item">
+              <a
+                href="https://www.facebook.com/Jeynixvfx"
+                target="_blank"
+                class="asidesocials__link"
+              >
+                <img
+                  src="./assets/img/facebook.svg"
+                  alt="facebook"
+                  class="asidesocials__link_facebook"
+                />
+              </a>
             </div>
-            <div class="socials__item">
-              <a href="#" class="socials__link socials__link_linkedin"></a>
+            <div class="asidesocials__item">
+              <a
+                href="https://www.linkedin.com/in/joni-nemir-a50794262/"
+                target="_blank"
+                class="asidesocials__link"
+              >
+                <img
+                  src="./assets/img/linkedin.svg"
+                  alt="linkedin"
+                  class="asidesocials__link_linkedin"
+                />
+              </a>
             </div>
-            <div class="socials__item">
-              <a href="#" class="socials__link socials__link_youtube"></a>
+            <div class="asidesocials__item">
+              <a
+                href="https://www.youtube.com/@jeynixyoutube/videos"
+                target="_blank"
+                class="asidesocials__link"
+              >
+                <img
+                  src="./assets/img/youtube.svg"
+                  alt="youtube"
+                  class="asidesocials__link_youtube"
+                />
+              </a>
             </div>
-            <div class="socials__item">
-              <a href="#" class="socials__link socials__link_telegram"></a>
+            <div class="asidesocials__item">
+              <a
+                href="https://www.tiktok.com/@jeynixvfx"
+                target="_blank"
+                class="asidesocials__link"
+              >
+                <img
+                  src="./assets/img/tiktok.svg"
+                  alt="tiktok"
+                  class="asidesocials__link_facebook"
+                />
+              </a>
             </div>
           </div>
           <button class="sidebar__switcher-mode button">
@@ -58,56 +109,195 @@
             <img
               src="./assets/img/nightMode.svg"
               alt="nightMode"
-              class="sidebar__swicther-mode-image"
+              class="sidebar__switcher-mode-image"
             />
           </button>
         </div>
       </aside>
-      <div class="gradient-1"></div>
-      <div class="gradient-2"></div>
-      <div class="gradient-3"></div>
-      <div class="main__left-skeleton"></div>
       <div class="main__wrapper">
-        <div class="overlay"></div>
-        <div class="main__content">
-          <div class="main__text">welcome</div>
-          <img src="./assets/img/Jeynix.svg" alt="logo" class="logo" />
-          <div class="main__description">
-            <h1>
+        <div class="overlay" style="width: 100vw"></div>
+        <div class="main__content" style="display: flex; justify-content: flex-start">
+          <!-- <div class="main__text">welcome</div> -->
+          <div class="logo__wrapper">
+            <img src="./assets/img/Jeynix.svg" alt="logo" class="logo active" />
+            <div class="logo__text active">Made in Ukraine</div>
+          </div>
+          <!-- <div class="main__description">
+            <h1 id="english">
               Sorry, but the site is still in development, but that does not mean that we do not
               work, if you have any questions, feel free to ask us or look at our work in social
               networks.
             </h1>
-            <div class="main__contacts">
-              <a href="mailto:mail@example.com" class="main__email">admin@example.com</a>
-              <div class="main__socials socials">
-                <div class="socials__item">
-                  <a href="#" class="socials__link socials__link_facebook"></a>
+            <h1 id="ukrainian">
+              Вибачте, але сайт все ще в розробці, але це не означає, що ми не працюємо, якщо у вас
+              є якісь питання, не соромтеся задавати їх нам або подивіться на наші роботи в
+              соціальних мережах.
+            </h1>
+          </div> -->
+          <section class="menu" style="display: flex">
+            <div class="menu__wrapper">
+              <nav class="navigation">
+                <div class="navigation__item">
+                  <a href="#make-video" class="navigation__link"
+                    ><span>Make-up on video</span>
+                    <img class="navigation__arrow" src="./assets/img/arrow.png"
+                  /></a>
                 </div>
-                <div class="socials__item">
-                  <a href="#" class="socials__link socials__link_linkedin"></a>
+                <div class="navigation__item">
+                  <a href="#deep-fake" class="navigation__link"
+                    >Deep fake <img class="navigation__arrow" src="./assets/img/arrow.png"
+                  /></a>
                 </div>
-                <div class="socials__item">
-                  <a href="#" class="socials__link socials__link_youtube"></a>
+                <div class="navigation__item">
+                  <a href="#" class="navigation__link"
+                    >Revisit old video <img class="navigation__arrow" src="./assets/img/arrow.png"
+                  /></a>
                 </div>
-                <div class="socials__item">
-                  <a href="#" class="socials__link socials__link_telegram"></a>
+              </nav>
+              <div class="links">
+                <div class="links__wrapper">
+                  <div class="links__item">
+                    <a href="#" class="links__link">About us</a>
+                  </div>
+                  <div class="links__item">
+                    <a href="#contacts" class="links__link">Contacts</a>
+                  </div>
                 </div>
+                <p class="links__description">
+                  Project mission is to enable the creation of a type of video content by the
+                  application of deep technologies
+                </p>
               </div>
             </div>
+          </section>
+          <div class="content">
+            <section class="headline" id="make-video" style="width: 100%">
+              <div class="headline__wrapper">
+                <img
+                  srcset="./assets/img/face.png 320w, ./assets/img/faceBig.png 769w"
+                  alt="face"
+                  class="headline__image"
+                />
+                <h2 class="headline__heading">
+                  <span class="headline__highlight">Create any HD deepfake,</span> with no
+                  limitation
+                </h2>
+                <p class="headline__description">
+                  Replace the face of the person(s) in your video with the face of anyone else you’d
+                  like. Create your deepfake HD video in just a few seconds! Simply upload your HD
+                  video, select one of your faces, and let our AI do the rest.
+                </p>
+                <div class="headline__button-wrapper">
+                  <button class="headline__button">Select a category</button>
+                  <div class="headline__button-overlay"></div>
+                </div>
+              </div>
+            </section>
+            <section class="order" id="deep-fake" style="margin-bottom: 154px">
+              <div class="order__wrapper">
+                <div class="back-menu">
+                  <img src="./assets/img/arrowLeft.svg" alt="arrowLeft" />
+                  Back to menu
+                </div>
+                <div class="order__video-wrapper">
+                  <iframe
+                    class="order__video"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?wmode=transparent"
+                    scrolling="no"
+                  ></iframe>
+                  <div class="order__overlay"></div>
+                </div>
+                <h2 class="headline__heading">
+                  <span class="headline__highlight">Create any HD deepfake,</span> with no
+                  limitation
+                </h2>
+                <p class="headline__description">
+                  Replace the face of the person(s) in your video with the face of anyone else you’d
+                  like. Create your deepfake HD video in just a few seconds! Simply upload your HD
+                  video, select one of your faces, and let our AI do the rest.
+                </p>
+                <div class="headline__button-wrapper">
+                  <button class="headline__button">Make an order</button>
+                  <div class="headline__button-overlay"></div>
+                </div>
+              </div>
+            </section>
+            <section
+              class="main__contacts contacts"
+              id="contacts"
+              style="
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+              "
+            >
+              <div class="back-menu" style="position: absolute; left: 16px; top: 0">
+                <img src="./assets/img/arrowLeft.svg" alt="arrowLeft" />
+                Back to menu
+              </div>
+              <div class="contacts__wrapper">
+                <div style="display: flex; flex-direction: column; justify-content: center">
+                  <h3 class="contacts__heading">Contacts</h3>
+                  <a href="mailto:jeynixvfx@gmail.com" class="main__email">jeynixvfx@gmail.com</a>
+                  <div class="main__socials socials">
+                    <div class="socials__item">
+                      <a
+                        href="https://www.facebook.com/Jeynixvfx"
+                        target="_blank"
+                        class="socials__link"
+                        ><img
+                          src="./assets/img/facebook.svg"
+                          alt="facebook"
+                          class="socials__link_facebook"
+                        />
+                      </a>
+                    </div>
+                    <div class="socials__item">
+                      <a
+                        href="https://www.linkedin.com/in/joni-nemir-a50794262/"
+                        target="_blank"
+                        class="socials__link"
+                      >
+                        <img
+                          src="./assets/img/linkedin.svg"
+                          alt="facebook"
+                          class="socials__link_facebook"
+                        />
+                      </a>
+                    </div>
+                    <div class="socials__item">
+                      <a
+                        href="https://www.youtube.com/@jeynixyoutube/videos"
+                        target="_blank"
+                        class="socials__link"
+                      >
+                        <img
+                          src="./assets/img/youtube.svg"
+                          alt="facebook"
+                          class="socials__link_facebook"
+                        />
+                      </a>
+                    </div>
+                    <div class="socials__item">
+                      <a
+                        href="https://www.tiktok.com/@jeynixvfx"
+                        target="_blank"
+                        class="socials__link"
+                      >
+                        <img
+                          src="./assets/img/tiktok.svg"
+                          alt="facebook"
+                          class="socials__link_tiktok"
+                        />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
-        <!-- <section class="headline">
-          <h1 class="headline__background-heading">welcome</h1>
-          <img src="" alt="face" class="headline__image" />
-          <h2 class="headline__heading">Create any HD deepfake, with no limitation</h2>
-          <p class="headline__description">
-            Replace the face of the person(s) in your video with the face of anyone else you’d like.
-            Create your deepfake HD video in just a few seconds! Simply upload your HD video, select
-            one of your faces, and let our AI do the rest.
-          </p>
-          <button class="headline__button">Select a category</button>
-        </section> -->
       </div>
     </main>
   </body>

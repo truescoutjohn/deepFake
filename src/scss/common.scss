@@ -1,20 +1,21 @@
+@font-face {
+  font-family: 'Furore';
+  src: url(./assets/fonts/Furore/Furore.otf);
+}
 * {
   box-sizing: border-box;
 }
 
 html,
 body {
-  //TODO need to delete
-  margin: 0;
-  height: 100vh;
-  // overflow-y: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 .overlay {
   position: absolute;
   z-index: -1;
-  width: calc(100% - 51px);
-  min-height: 800px;
+  width: calc(100% - 50px);
   height: 100vh;
   background: #0d1011;
   background-repeat: no-repeat;
@@ -28,7 +29,7 @@ body {
 }
 
 .gradient-1 {
-  position: absolute;
+  position: fixed;
   width: 159px;
   height: 95px;
   left: 50%;
@@ -42,7 +43,7 @@ body {
 }
 
 .gradient-2 {
-  position: absolute;
+  position: fixed;
   width: 215px;
   height: 86px;
   left: 23px;
@@ -80,6 +81,20 @@ body {
   text-transform: uppercase;
 }
 
+.content {
+  display: flex;
+  padding: 0 165px 0 60px;
+  width: 100%;
+  background-color: #0d1011;
+
+  @media screen and(min-width: 769px) {
+    max-width: 800px;
+    flex-direction: column;
+    overflow-y: scroll;
+    // overflow-x: hidden;
+  }
+}
+
 h1 {
   text-align: center;
   font-family: 'Montserrat';
@@ -88,17 +103,25 @@ h1 {
   font-size: 36px;
   line-height: 120%;
   color: #e2ff00;
+
+  @media screen and (max-width: 426px) {
+    font-size: 24px;
+  }
+}
+
+#ukrainian {
+  display: none;
 }
 
 .logo {
-  display: inline-block;
-  margin: 25px 17px;
-}
+  position: absolute;
+  top: 0;
+  left: 0;
+  @media screen and (max-width: 768px) {
+    display: none;
 
-.main_night-mode {
-  & .logo {
-    @media screen and (max-width: 768px) {
-      display: none;
+    &.active {
+      display: block;
     }
   }
 }
@@ -107,25 +130,111 @@ h1 {
   display: flex;
   justify-content: center;
   &__link {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 33px;
     width: 24px;
     height: 24px;
+    width: 35px;
+    height: 35px;
 
     &_facebook {
-      background: url(./assets/img/facebook.svg);
+      margin: auto;
     }
 
     &_linkedin {
-      background: url(./assets/img/linkedin.svg);
+      margin: auto;
     }
 
     &_youtube {
-      background: url(./assets/img/youtube.svg);
+      margin: auto;
     }
 
     &_telegram {
-      background: url(./assets/img/telegram.svg);
+      margin: auto;
     }
+  }
+}
+
+.contacts__wrapper {
+  padding: 0 16px;
+}
+
+.contacts__heading {
+  margin: 0 16px;
+  text-align: center;
+  font-family: 'Play';
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 140%;
+  color: #e2ff00;
+
+  &_night-mode {
+    font-family: 'Furore';
+    font-size: 32px;
+    line-height: 140%;
+    background: radial-gradient(134.31% 685% at 42.65% 21%, #ffffff 0%, #101314 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+}
+
+.gradient-1.active {
+  display: block;
+  position: absolute;
+  width: 184px;
+  height: 73.6px;
+  left: 14px;
+  top: -20px;
+  background: #e2ff00;
+  mix-blend-mode: normal;
+  opacity: 0.5;
+  filter: blur(76.5954px);
+}
+
+.gradient-4 {
+  display: none;
+  position: absolute;
+  width: 459.75px;
+  height: 411.59px;
+  right: -50%;
+  bottom: -50%;
+  opacity: 0.5;
+
+  background: #e2ff00;
+  filter: blur(230px);
+  &.active {
+    display: block;
+  }
+}
+
+.lines {
+  position: absolute;
+}
+.lines2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.back-menu {
+  cursor: pointer;
+  position: relative;
+  z-index: 1000;
+  display: flex;
+  gap: 7px;
+  margin: 22px 0;
+  width: 125px;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 160%;
+  color: #ffffff;
+
+  @media screen and (min-width: 769px) {
+    display: none;
   }
 }
