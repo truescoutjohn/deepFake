@@ -1,5 +1,5 @@
-export default offsetX => {
-  document.querySelector('.main__wrapper').scrollTo({ left: -offsetX, behavior: 'smooth' });
+export default () => {
+  document.querySelector('.main__wrapper').scrollTo({ left: 0, behavior: 'smooth' });
 };
 
 export const setWidthCarousel = () => {

@@ -86,10 +86,6 @@ function init() {
   const ukrainian = document.querySelector('.sidebar__lang-item_ua');
   const headline = document.querySelector('.headline');
   const content = document.querySelector('.content');
-  const heightMakeVideo = headline.clientHeight;
-  const heightOrder = document.querySelector('.order').clientHeight;
-
-  document.querySelector('.overlay').style.width = `${window.innerWidth * 4}px`;
 
   english.addEventListener('click', function (event) {
     document.querySelector('#english').style.display = 'block';
@@ -113,7 +109,9 @@ function init() {
       document.querySelector('.sidebar__logo').src = './assets/img/logoNightMode.svg';
       document.querySelector('.headline__image').srcset =
         './assets/img/faceNightMode.png 320w, ./assets/img/faceNightModeBig.png 769w';
-      document.querySelector('.order').classList.add('order_night-mode');
+      [...document.querySelectorAll('.order')].forEach(element =>
+        element.classList.add('order_night-mode'),
+      );
       document.querySelector('.contacts__heading').classList.add('contacts__heading_night-mode');
       document.querySelector('.menu').classList.add('menu_night-mode');
       document.querySelector('.lines').style.display = 'none';
@@ -162,23 +160,22 @@ function init() {
     historyEvents.push({ element, mouseEnterHandler, mouseOutHandler });
   });
 
-  document.querySelector('[href="#make-video"]').click();
-
-  document
-    .querySelector('.headline__button-wrapper')
-    .addEventListener('click', DisplayMenuHandler.bind(window.innerWidth));
+  document.querySelector('.headline__button-wrapper').addEventListener('click', DisplayMenuHandler);
   setWidthCarousel();
   [...document.querySelectorAll('.back-menu')].forEach(element =>
     element.addEventListener('click', clickBackMenuHandler),
   );
   if (window.innerWidth > 768) {
-    [...document.querySelectorAll('.menu, .headline, .contacts, .order')].forEach(element => {
-      element.style.flexShrink = '1';
-      element.style.flexBasis = 'auto';
+    [...document.querySelectorAll('.headline, .contacts, .order')].forEach(element => {
+      element.style.flexShrink = '0';
+      element.style.flexBasis = window.innerHeight + 'px';
     });
+    document.querySelector('.menu').style.flexShrink = '0';
+    document.querySelector('.menu').style.flexBasis = 'auto';
   }
 
   if (window.innerWidth <= 768) {
+    document.querySelector('#initial-screen').scrollIntoView({ behaviour: 'smooth' });
     document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
       event.preventDefault();
       document.querySelector('#make-video').scrollIntoView({ behavior: 'smooth' });
@@ -198,33 +195,35 @@ function init() {
   if (window.innerWidth > 768) {
     document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
       event.preventDefault();
-      content.scrollTo({ top: 0, behavior: 'smooth' });
+      content.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth',
+      });
     });
 
     document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
       event.preventDefault();
-      content.scrollTo({ top: heightOrder + heightMakeVideo + 125, behavior: 'smooth' });
+      content.scrollTo({ top: window.innerHeight * 2 + 100, behavior: 'smooth' });
     });
 
     document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
       event.preventDefault();
       content.scrollTo({
-        top: heightOrder + heightMakeVideo + document.querySelector('.contacts').clientHeight + 400,
+        top: window.innerHeight * 3 + 200,
         behavior: 'smooth',
       });
     });
   }
+  [...document.querySelectorAll('.order__video-wrapper')].forEach(
+    element =>
+      (element.style.height = document.querySelector('.headline__image').height - 20 + 'px'),
+  );
 }
 document.addEventListener('DOMContentLoaded', init);
 
-function resizeIframe(event) {
-  if (window.innerWidth > 768) {
-    event.target.style.height = '322px';
-    document.querySelector('.order__video-wrapper').style.height = '324px';
-  } else {
-    event.target.style.height = '159px';
-    document.querySelector('.order__video-wrapper').style.height = '161px';
-  }
+function resizeBlock(event) {
+  event.target.style.height = document.querySelector('.headline__image').height - 22 + 'px';
 }
 
-document.querySelector('.order__video').addEventListener('load', resizeIframe);
+document.querySelector('.order__video').addEventListener('load', resizeBlock);
+document.querySelector('.order__img').addEventListener('load', resizeBlock);

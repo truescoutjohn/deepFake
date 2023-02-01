@@ -1,6 +1,8 @@
 .navigation {
-  padding-top: 40%;
-  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-grow: 1;
 
   &__arrow {
     position: absolute;
@@ -82,10 +84,11 @@
 }
 
 .links {
+  position: absolute;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  flex-grow: 2;
   padding-bottom: 32px;
   color: white;
   &__wrapper {

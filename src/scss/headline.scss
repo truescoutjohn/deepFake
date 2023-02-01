@@ -201,6 +201,9 @@
 
   &__wrapper {
     padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__image {
@@ -221,7 +224,7 @@
 
   &__description {
     margin: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     font-family: 'Montserrat';
     line-height: 160%;
     color: #ffffff;
