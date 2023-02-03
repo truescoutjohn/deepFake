@@ -118,10 +118,10 @@
         <div class="overlay" style="width: 100vw"></div>
         <div class="main__content" style="display: flex; justify-content: flex-start">
           <div class="main__text">welcome</div>
-          <div class="logo__wrapper">
+          <a href="#jeynix" class="logo__wrapper">
             <img src="./assets/img/Jeynix.svg" alt="logo" class="logo active" />
-            <div class="logo__text active">Made in Ukraine</div>
-          </div>
+            <span class="logo__text active">Made in Ukraine</span>
+          </a>
           <!-- <div class="main__description">
             <h1 id="english">
               Sorry, but the site is still in development, but that does not mean that we do not
@@ -149,7 +149,7 @@
                   /></a>
                 </div>
                 <div class="navigation__item">
-                  <a href="#" class="navigation__link"
+                  <a href="#old-videos" class="navigation__link"
                     >Revisit old video <img class="navigation__arrow" src="./assets/img/arrow.png"
                   /></a>
                 </div>
@@ -157,7 +157,7 @@
               <div class="links">
                 <div class="links__wrapper">
                   <div class="links__item">
-                    <a href="#" class="links__link">About us</a>
+                    <a href="#about" class="links__link">About us</a>
                   </div>
                   <div class="links__item">
                     <a href="#contacts" class="links__link">Contacts</a>
@@ -172,9 +172,17 @@
           </section>
           <div class="content">
             <section class="order" id="initial-screen">
+              <div class="back-menu" style="position: absolute; left: 16px; top: 0">
+                <img src="./assets/img/arrowLeft.svg" alt="arrowLeft" />
+                Back to menu
+              </div>
               <div class="order__wrapper">
-                <div class="order__video-wrapper">
-                  <img src="./assets/img/background1.jpg" alt="image" class="order__img" />
+                <div class="order__video-wrapper initial-wrapper">
+                  <img
+                    src="./assets/img/background1.jpg"
+                    alt="image"
+                    class="order__img initial-image"
+                  />
                   <div class="order__overlay"></div>
                 </div>
                 <h2 class="headline__heading" style="text-align: center">
@@ -231,6 +239,29 @@
                   <button class="headline__button">Make an order</button>
                   <div class="headline__button-overlay"></div>
                 </div>
+              </div>
+            </section>
+            <section
+              class="order"
+              id="old-videos"
+              style="display: flex; align-items: center; position: relative"
+            >
+              <div class="order__wrapper" style="width: 100%">
+                <div class="back-menu" style="position: absolute; left: 16px; top: 0">
+                  <img src="./assets/img/arrowLeft.svg" alt="arrowLeft" />
+                  Back to menu
+                </div>
+                <div class="order__video-wrapper">
+                  <iframe
+                    class="order__video"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?wmode=transparent"
+                    scrolling="no"
+                  ></iframe>
+                  <div class="order__overlay"></div>
+                </div>
+                <h2 class="headline__heading">
+                  <span class="headline__highlight">Was ist das</span>
+                </h2>
               </div>
             </section>
             <section
@@ -305,6 +336,17 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </section>
+            <section class="order" id="about" style="position: relative">
+              <div class="back-menu" style="position: absolute; left: 16px; top: 0">
+                <img src="./assets/img/arrowLeft.svg" alt="arrowLeft" />
+                Back to menu
+              </div>
+              <div class="order__wrapper">
+                <h2 class="headline__heading" style="text-align: center">
+                  <span class="headline__highlight">Caption subtitle</span>
+                </h2>
               </div>
             </section>
           </div>

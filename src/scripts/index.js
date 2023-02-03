@@ -1,8 +1,11 @@
 import DisplayMenuHandler, { setWidthCarousel, clickBackMenuHandler } from './menu';
 import '../index.scss';
+import 'jquery';
+import 'jquery-ui-bundle';
 
 const sidebar = document.querySelector('.sidebar');
 const main = document.querySelector('.main');
+const AMOUNT_BLOCK = 6;
 const historyEvents = [];
 
 const createAnimationYellow = function () {
@@ -175,49 +178,146 @@ function init() {
   }
 
   if (window.innerWidth <= 768) {
-    document.querySelector('#initial-screen').scrollIntoView({ behaviour: 'smooth' });
+    document.querySelector('#initial-screen').scrollIntoView({ behaviour: 'instant' });
+
+    document.querySelector('[href="#jeynix"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.main__wrapper').animate(
+        { scrollLeft: window.innerWidth - 50 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
+    });
+
     document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
       event.preventDefault();
-      document.querySelector('#make-video').scrollIntoView({ behavior: 'smooth' });
+      $('.main__wrapper').animate(
+        { scrollLeft: (window.innerWidth - 50) * 2 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
     });
 
     document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
       event.preventDefault();
-      document.querySelector('#deep-fake').scrollIntoView({ behavior: 'smooth' });
+      $('.main__wrapper').animate(
+        { scrollLeft: (window.innerWidth - 50) * 3 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
+    });
+
+    document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.main__wrapper').animate(
+        { scrollLeft: (window.innerWidth - 50) * 4 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
     });
 
     document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
       event.preventDefault();
-      document.querySelector('#contacts').scrollIntoView({ behavior: 'smooth' });
+      $('.main__wrapper').animate(
+        { scrollLeft: (window.innerWidth - 50) * 5 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
+    });
+
+    document.querySelector('[href="#about"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.main__wrapper').animate(
+        { scrollLeft: (window.innerWidth - 50) * 6 + 60 },
+        1000,
+        'easeInOutCirc',
+      );
     });
   }
 
   if (window.innerWidth > 768) {
+    document.querySelector('[href="#jeynix"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.content').animate({ scrollTop: 0 }, 1000, 'easeInOutCirc');
+    });
+
     document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
       event.preventDefault();
-      content.scrollTo({
-        top: window.innerHeight,
-        behavior: 'smooth',
-      });
+      $('.content').animate(
+        { scrollTop: content.scrollHeight / AMOUNT_BLOCK },
+        1000,
+        'easeInOutCirc',
+      );
     });
 
     document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
       event.preventDefault();
-      content.scrollTo({ top: window.innerHeight * 2 + 100, behavior: 'smooth' });
+      $('.content').animate(
+        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 2 },
+        1000,
+        'easeInOutCirc',
+      );
+    });
+
+    document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.content').animate(
+        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 3 },
+        1000,
+        'easeInOutCirc',
+      );
     });
 
     document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
       event.preventDefault();
-      content.scrollTo({
-        top: window.innerHeight * 3 + 200,
-        behavior: 'smooth',
-      });
+      $('.content').animate(
+        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 4 },
+        1000,
+        'easeInOutCirc',
+      );
+    });
+
+    document.querySelector('[href="#about"]').addEventListener('click', function (event) {
+      event.preventDefault();
+      $('.content').animate(
+        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 5 },
+        1000,
+        'easeInOutCirc',
+      );
     });
   }
+
+  document.querySelector('[href="#jeynix"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'welcome';
+  });
+
+  document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'deepfake';
+  });
+
+  document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'makevideo';
+  });
+
+  document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'oldvideo';
+  });
+
+  document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'contacts';
+  });
+
+  document.querySelector('[href="#about"]').addEventListener('click', function (event) {
+    document.querySelector('.main__text').textContent = 'about';
+  });
+
   [...document.querySelectorAll('.order__video-wrapper')].forEach(
     element =>
       (element.style.height = document.querySelector('.headline__image').height - 20 + 'px'),
   );
+
+  document.querySelector('.initial-wrapper').style.height =
+    document.querySelector('.initial-image').height + 2 + 'px';
 }
 document.addEventListener('DOMContentLoaded', init);
 
@@ -225,5 +325,7 @@ function resizeBlock(event) {
   event.target.style.height = document.querySelector('.headline__image').height - 22 + 'px';
 }
 
-document.querySelector('.order__video').addEventListener('load', resizeBlock);
-document.querySelector('.order__img').addEventListener('load', resizeBlock);
+[...document.querySelectorAll('.order__video')].forEach(element =>
+  element.addEventListener('load', resizeBlock),
+);
+// document.querySelector('.order__img').addEventListener('load', resizeBlock);

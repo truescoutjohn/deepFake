@@ -192,10 +192,11 @@
 
 .headline {
   padding-top: 44px;
-  margin-bottom: 135px;
+  // margin-bottom: 135px;
   color: #fff;
 
   @media screen and (min-width: 769px) {
+    display: flex;
     padding-top: 0;
   }
 
