@@ -11,6 +11,9 @@ module.exports = (env, argv) => {
     output: {
       filename: 'bundle.js',
     },
+    optimization: {
+      minimize: false,
+    },
     module: {
       rules: [
         {

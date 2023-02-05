@@ -16,6 +16,7 @@
     display: block;
     position: relative;
     gap: 7px;
+    margin-bottom: 40px;
     text-decoration: none;
     font-family: 'Play';
     font-size: 32px;
@@ -35,6 +36,16 @@
       & > .navigation__arrow {
         opacity: 1;
       }
+    }
+
+    &.active {
+      background: radial-gradient(80.07% 273.88% at 63.65% 38.06%, #e2ff00 0%, #0d1011 100%),
+        #ffffff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      opacity: 0.9;
     }
   }
 }
@@ -56,13 +67,13 @@
 
   &_night-mode {
     & .navigation__link {
-      margin-bottom: 40px;
       font-family: 'Furore';
       color: #ffffff;
       opacity: 0.7;
       font-size: 25px;
       line-height: 140%;
-      &:hover {
+      &:hover,
+      &.active {
         background: transparent;
         background-clip: none;
         -webkit-text-fill-color: #ffffff;
@@ -71,14 +82,59 @@
           display: none;
         }
       }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 1.5px;
+        background: linear-gradient(to left, #ffffff, #000000);
+      }
+
+      &.active::before {
+        width: 100%;
+        transition: width 0.35s;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
     }
     & .links__link {
+      position: relative;
       font-family: 'Furore';
       color: #ffffff;
       opacity: 0.7;
       margin-bottom: 40px;
       font-size: 25px;
       line-height: 140%;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.active {
+        background: transparent;
+        background-clip: none;
+        -webkit-text-fill-color: #ffffff;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 0;
+        height: 1.5px;
+        background: linear-gradient(to left, #ffffff, #000000);
+      }
+
+      &.active::before {
+        width: 100%;
+        transition: width 0.35s;
+      }
     }
   }
 }
@@ -103,6 +159,16 @@
     line-height: 140%;
     color: #ffffff;
     opacity: 0.5;
+
+    &.active {
+      background: radial-gradient(80.07% 273.88% at 63.65% 38.06%, #e2ff00 0%, #0d1011 100%),
+        #ffffff;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      opacity: 0.9;
+    }
   }
 
   &__description {

@@ -82,6 +82,20 @@ const createAnimationBlack = function () {
   };
 };
 
+const makeActiveLink = event => {
+  if (
+    event.target.classList.contains('navigation__link') &&
+    event.target.classList.contains('links__link')
+  ) {
+    return;
+  }
+
+  if (document.querySelector('a.active')) {
+    document.querySelector('a.active').classList.remove('active');
+  }
+  event.target.classList.add('active');
+};
+
 function init() {
   const socials = [...document.querySelectorAll('.socials__link img')];
   const switcher = document.querySelector('.sidebar__switcher-mode-image');
@@ -90,14 +104,6 @@ function init() {
   const headline = document.querySelector('.headline');
   const content = document.querySelector('.content');
 
-  english.addEventListener('click', function (event) {
-    document.querySelector('#english').style.display = 'block';
-    document.querySelector('#ukrainian').style.display = 'none';
-  });
-  ukrainian.addEventListener('click', function (event) {
-    document.querySelector('#ukrainian').style.display = 'block';
-    document.querySelector('#english').style.display = 'none';
-  });
   switcher.addEventListener('click', function () {
     sidebar.classList.toggle('sidebar_night-mode');
 
@@ -110,8 +116,6 @@ function init() {
 
     if (sidebar.classList.contains('sidebar_night-mode')) {
       document.querySelector('.sidebar__logo').src = './assets/img/logoNightMode.svg';
-      document.querySelector('.headline__image').srcset =
-        './assets/img/faceNightMode.png 320w, ./assets/img/faceNightModeBig.png 769w';
       [...document.querySelectorAll('.order')].forEach(element =>
         element.classList.add('order_night-mode'),
       );
@@ -131,9 +135,11 @@ function init() {
     } else {
       document.querySelector('.sidebar__logo').src = './assets/img/logo.svg';
       document.querySelector('.logo').style.filter = '';
-      document.querySelector('.headline__image').srcset =
-        './assets/img/face.png 320w, ./assets/img/faceBig.png 769w';
-      document.querySelector('.order').classList.remove('order_night-mode');
+      // document.querySelector('.headline__image').srcset =
+      //   './assets/img/face.png 320w, ./assets/img/faceBig.png 769w';
+      [...document.querySelectorAll('.order')].forEach(element =>
+        element.classList.remove('order_night-mode'),
+      );
       document.querySelector('.contacts__heading').classList.remove('contacts__heading_night-mode');
       document.querySelector('.menu').classList.remove('menu_night-mode');
       socials.forEach(element => {
@@ -149,6 +155,21 @@ function init() {
       '.logo',
     ).style.filter = `brightness(0) saturate(100%) invert(91%) sepia(100%) saturate(0%) hue-rotate(306deg) brightness(108%) contrast(101%)`;
     main.classList.toggle('main_night-mode');
+  });
+
+  english.addEventListener('click', function () {
+    [...document.querySelectorAll('.en')].forEach(element => {
+      element.classList.remove('visible');
+      element.classList.add('visible');
+      element.nextElementSibling.classList.remove('visible');
+    });
+  });
+
+  ukrainian.addEventListener('click', function () {
+    [...document.querySelectorAll('.uk')].forEach(element => {
+      element.classList.add('visible');
+      element.previousElementSibling.classList.remove('visible');
+    });
   });
 
   document.querySelector(
@@ -180,59 +201,71 @@ function init() {
   if (window.innerWidth <= 768) {
     document.querySelector('#initial-screen').scrollIntoView({ behaviour: 'instant' });
 
-    document.querySelector('[href="#jeynix"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: window.innerWidth - 50 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#jeynix"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: window.innerWidth - 50 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: (window.innerWidth - 50) * 2 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#make-video"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: (window.innerWidth - 50) * 2 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: (window.innerWidth - 50) * 3 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#deep-fake"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: (window.innerWidth - 50) * 3 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: (window.innerWidth - 50) * 4 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#old-videos"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: (window.innerWidth - 50) * 4 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: (window.innerWidth - 50) * 5 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#contacts"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: (window.innerWidth - 50) * 5 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#about"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.main__wrapper').animate(
-        { scrollLeft: (window.innerWidth - 50) * 6 + 60 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#about"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.main__wrapper').animate(
+          { scrollLeft: (window.innerWidth - 50) * 6 + 60 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
   }
 
   if (window.innerWidth > 768) {
@@ -241,88 +274,119 @@ function init() {
       $('.content').animate({ scrollTop: 0 }, 1000, 'easeInOutCirc');
     });
 
-    document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.content').animate(
-        { scrollTop: content.scrollHeight / AMOUNT_BLOCK },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#make-video"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.content').animate(
+          { scrollTop: content.scrollHeight / AMOUNT_BLOCK },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.content').animate(
-        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 2 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#deep-fake"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.content').animate(
+          { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 2 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.content').animate(
-        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 3 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#old-videos"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.content').animate(
+          { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 3 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.content').animate(
-        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 4 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#contacts"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.content').animate(
+          { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 4 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
 
-    document.querySelector('[href="#about"]').addEventListener('click', function (event) {
-      event.preventDefault();
-      $('.content').animate(
-        { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 5 },
-        1000,
-        'easeInOutCirc',
-      );
-    });
+    [...document.querySelectorAll('[href="#about"]')].forEach(element =>
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        $('.content').animate(
+          { scrollTop: (content.scrollHeight / AMOUNT_BLOCK) * 5 },
+          1000,
+          'easeInOutCirc',
+        );
+      }),
+    );
   }
 
   document.querySelector('[href="#jeynix"]').addEventListener('click', function (event) {
     document.querySelector('.main__text').textContent = 'welcome';
   });
 
-  document.querySelector('[href="#deep-fake"]').addEventListener('click', function (event) {
-    document.querySelector('.main__text').textContent = 'deepfake';
-  });
+  [...document.querySelectorAll('[href="#deep-fake"]')].forEach(element =>
+    element.addEventListener('click', function (event) {
+      makeActiveLink(event);
+      document.querySelector('.main__text').textContent = 'face swap';
+    }),
+  );
 
-  document.querySelector('[href="#make-video"]').addEventListener('click', function (event) {
-    document.querySelector('.main__text').textContent = 'makevideo';
-  });
+  [...document.querySelectorAll('[href="#make-video"]')].forEach(element =>
+    element.addEventListener('click', function (event) {
+      makeActiveLink(event);
+      document.querySelector('.main__text').textContent = 'make-up';
+    }),
+  );
 
-  document.querySelector('[href="#old-videos"]').addEventListener('click', function (event) {
-    document.querySelector('.main__text').textContent = 'oldvideo';
-  });
+  [...document.querySelectorAll('[href="#old-videos"]')].forEach(element =>
+    element.addEventListener('click', function (event) {
+      makeActiveLink(event);
+      document.querySelector('.main__text').textContent = 'oldvideo';
+    }),
+  );
 
-  document.querySelector('[href="#contacts"]').addEventListener('click', function (event) {
-    document.querySelector('.main__text').textContent = 'contacts';
-  });
+  [...document.querySelectorAll('[href="#contacts"]')].forEach(element =>
+    element.addEventListener('click', function (event) {
+      makeActiveLink(event);
+      document.querySelector('.main__text').textContent = 'contacts';
+    }),
+  );
 
-  document.querySelector('[href="#about"]').addEventListener('click', function (event) {
-    document.querySelector('.main__text').textContent = 'about';
-  });
+  [...document.querySelectorAll('[href="#about"]')].forEach(element =>
+    element.addEventListener('click', function (event) {
+      makeActiveLink(event);
+      document.querySelector('.main__text').textContent = 'about';
+    }),
+  );
 
-  [...document.querySelectorAll('.order__video-wrapper')].forEach(
+  [...document.querySelectorAll('.order__video-wrapper, .order__overlay')].forEach(
     element =>
-      (element.style.height = document.querySelector('.headline__image').height - 20 + 'px'),
+      (element.style.height =
+        document.querySelector('.initial-image').height + 2 <= 100
+          ? '361px'
+          : document.querySelector('.initial-image').height - 18 + 'px'),
   );
 
   document.querySelector('.initial-wrapper').style.height =
-    document.querySelector('.initial-image').height + 2 + 'px';
+    document.querySelector('.initial-image').height + 2 <= 100
+      ? '361px'
+      : document.querySelector('.initial-image').height + 2 + 'px';
 }
+
 document.addEventListener('DOMContentLoaded', init);
 
 function resizeBlock(event) {
-  event.target.style.height = document.querySelector('.headline__image').height - 22 + 'px';
+  event.target.style.height = 'calc(100% - 2px)';
 }
 
 [...document.querySelectorAll('.order__video')].forEach(element =>
