@@ -119,7 +119,9 @@ function init() {
       [...document.querySelectorAll('.order')].forEach(element =>
         element.classList.add('order_night-mode'),
       );
-      document.querySelector('.contacts__heading').classList.add('contacts__heading_night-mode');
+      [...document.querySelectorAll('.contacts__heading')].forEach(element =>
+        element.classList.add('contacts__heading_night-mode'),
+      );
       document.querySelector('.menu').classList.add('menu_night-mode');
       document.querySelector('.lines').style.display = 'none';
       document.querySelector('.lines2').style.display = 'none';
@@ -140,7 +142,9 @@ function init() {
       [...document.querySelectorAll('.order')].forEach(element =>
         element.classList.remove('order_night-mode'),
       );
-      document.querySelector('.contacts__heading').classList.remove('contacts__heading_night-mode');
+      [...document.querySelectorAll('.contacts__heading')].forEach(element =>
+        element.classList.remove('contacts__heading_night-mode'),
+      );
       document.querySelector('.menu').classList.remove('menu_night-mode');
       socials.forEach(element => {
         const { mouseEnterHandler, mouseOutHandler } = createAnimationYellow();
